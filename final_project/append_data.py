@@ -8,8 +8,8 @@ def append_data():
     tickers = ["AAPL", "TSLA", "AMZN", "FB", "GME", "GOOG", "MSFT", "COKE", "PEP", "AMD"]
 
     for ticker in tickers:
-        
-        url = 'http://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + tickers[x] + '&outputsize=full&apikey=NG9C9EPVBMQTOC8'
+        url = 'http://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + ticker + '&outputsize=full&apikey=NG9C9EPVBMQTOC8'
+        print(url)
         request = requests.get(url)
         req_dict =json.loads(request.text)
         # json.dump(req_dict, open("results.json", "w"))
@@ -31,6 +31,7 @@ def append_data():
             if date == last_date:
                 break
             print(date + ", " + req_dict[key1][date][key2])
+            print(ticker)
             # fil.write(date + ", " + req_dict[key1][date][key2] + "\n")
             write_lines.append(date + ", " + req_dict[key1][date][key2] + "\n")
             
